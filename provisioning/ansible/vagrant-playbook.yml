@@ -1,0 +1,14 @@
+---
+  - name: configure ntp on all hosts
+    hosts: all
+    remote_user: root
+
+    roles:
+      - ntp
+
+  # - name: configure packer on master node
+  #   hosts: master
+  #   remote_user: root
+  #
+  #   roles:
+  #     - packer

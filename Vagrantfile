@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8081
   config.vm.network "private_network", ip: "192.168.40.10"
   config.vm.synced_folder "./", "/vagrant"
-  
+
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
   end
@@ -16,7 +16,8 @@ Vagrant.configure("2") do |config|
     apt-get upgrade -y
   SHELL
   config.vm.provision "ansible_local" do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "/provisioning/ansible/vagrant-playbook.yml"
+    # ansible.inventory_path = "/provisioning/ansible/inventory/vagrant"
   end
   config.vm.provision "docker" do |docker|
     docker.build_image "/vagrant/app"
