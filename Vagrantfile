@@ -7,11 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8081
   config.vm.network "private_network", ip: "192.168.40.10"
   config.vm.synced_folder "./", "/vagrant"
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
+  
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "1024"
   end
@@ -19,4 +15,10 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get upgrade -y
   SHELL
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbook.yml"
+  end
+  config.vm.provision "docker" do |docker|
+    docker.build_image "/vagrant/app"
+  end
 end
