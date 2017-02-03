@@ -1,1 +1,22 @@
 ---
+  - name: install dependencies
+    apt: name={{ item }} state=present
+    tags: packer
+    with_items:
+       - unzip
+
+  - name:
+    tags: packer
+    get_url: url="https://releases.hashicorp.com/packer/0.12.2/packer_0.12.2_linux_amd64.zip" dest=/tmp/packer.zip
+
+  - name: unzip packer
+    unarchive: src=/tmp/packer.zip dest=/tmp/
+    tags: packer
+
+  - name: copy packer executable to bin
+    copy:
+      src: /tmp/packer
+      dest: /bin/packer
+      owner: root
+      group: root
+      mode: 0755

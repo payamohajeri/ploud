@@ -1,14 +1,18 @@
 ---
   - name: configure ntp on all hosts
-    hosts: all
-    remote_user: root
+    hosts: vagrant
+    become: true
+    become_user: root
+    become_method: sudo
 
     roles:
       - ntp
 
-  # - name: configure packer on master node
-  #   hosts: master
-  #   remote_user: root
-  #
-  #   roles:
-  #     - packer
+  - name: configure packer on master node
+    hosts: master
+    become: true
+    become_user: root
+    become_method: sudo
+
+    roles:
+      - packer
