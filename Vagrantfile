@@ -30,8 +30,9 @@ Vagrant.configure("2") do |config|
 
   end
 
-  # config.vm.provision "docker" do |docker|
-  #   docker.build_image "/vagrant/app"
-  # end
+  config.vm.provision "docker" do |docker|
+    docker.build_image "/vagrant/provisioning/docker/web1/", args: "-t web1:1"
+    docker.run "ubuntu", cmd: "tail -f /dev/null", args: "-v '/vagrant/app/web1:/app'"
+  end
 
 end
