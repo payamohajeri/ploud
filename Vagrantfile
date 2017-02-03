@@ -27,11 +27,10 @@ Vagrant.configure("2") do |config|
     ansible.inventory_path = "./inventory/hosts"
     ansible.limit = "vagrant"
     ansible.verbose = true
-
   end
 
   config.vm.provision "docker" do |docker|
-    docker.build_image "/vagrant/provisioning/docker/web1/", args: "-t web1:1"
+    docker.build_image "/vagrant/provisioning/docker/web1/", args: "-t web1:latest"
     docker.run "ubuntu", cmd: "tail -f /dev/null", args: "-v '/vagrant/app/web1:/app'"
   end
 

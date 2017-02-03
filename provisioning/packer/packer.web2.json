@@ -1,0 +1,32 @@
+{
+  "builders":[
+    {
+        "type": "docker",
+        "image": "ubuntu:16.04",
+        "commit": true,
+        "author": "Payam Mohajeri"
+    }
+  ],
+  "provisioners":[
+    {
+      "type": "shell",
+      "inline": [
+        "apt-get -y update",
+        "apt-get install -y software-properties-common",
+        "apt-add-repository ppa:ansible/ansible",
+        "apt-get -y update",
+        "apt-get install -y ansible"
+      ]
+    }
+  ],
+
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "web2",
+        "tag": "latest"
+      }
+    ]
+  ]
+}
