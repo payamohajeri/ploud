@@ -20,3 +20,7 @@
       owner: root
       group: root
       mode: 0755
+
+  - name: build an image with packer
+    shell: packer build /vagrant/provisioning/packer/packer.web2.json
+    tags: packer

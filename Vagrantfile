@@ -31,7 +31,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "docker" do |docker|
     docker.build_image "/vagrant/provisioning/docker/web1/", args: "-t web1:latest"
-    docker.run "ubuntu", cmd: "tail -f /dev/null", args: "-v '/vagrant/app/web1:/app'"
+    docker.run "web1:latest", cmd: "tail -f /dev/null", args: "-v '/vagrant/app/web1:/app' --name web1"
+  end
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.provisioning_path = "/vagrant/provisioning/ansible"
+    ansible.playbook = "./master-playbook.yml"
+    ansible.inventory_path = "./inventory/hosts"
+    ansible.limit = "master"
+    ansible.verbose = true
   end
 
 end
