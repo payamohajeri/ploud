@@ -21,6 +21,14 @@
       group: root
       mode: 0755
 
-  - name: build an image with packer
-    shell: packer build /vagrant/provisioning/packer/packer.web2.json
+  - name: build an image with packer web2
+    shell: packer build /vagrant/provisioning/packer/web2/packer.web2.json
+    tags: packer
+
+  - name: build an image with packer web3 for salt master
+    shell: packer build /vagrant/provisioning/packer/web3/packer.web3.salt.master.json
+    tags: packer
+
+  - name: build an image with packer web3 for salt minion
+    shell: packer build /vagrant/provisioning/packer/web3/packer.web3.salt.minion.json
     tags: packer

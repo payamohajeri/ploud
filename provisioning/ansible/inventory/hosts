@@ -1,5 +1,5 @@
-[vagrant]
+[master]
 localhost ansible_connection=local
 
-[master]
+[node1]
 localhost ansible_connection=local

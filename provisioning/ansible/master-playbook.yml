@@ -1,9 +1,9 @@
 ---
-  - name: configure packer on master node
+  - name: configure ntp on master node
     hosts: master
     become: true
     become_user: root
     become_method: sudo
 
     roles:
-      - packer
+      - ntp

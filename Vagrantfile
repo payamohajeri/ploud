@@ -23,9 +23,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.provisioning_path = "/vagrant/provisioning/ansible"
-    ansible.playbook = "./vagrant-playbook.yml"
+    ansible.playbook = "./master-playbook.yml"
     ansible.inventory_path = "./inventory/hosts"
-    ansible.limit = "vagrant"
+    ansible.limit = "master"
     ansible.verbose = true
   end
 
@@ -36,9 +36,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.provisioning_path = "/vagrant/provisioning/ansible"
-    ansible.playbook = "./master-playbook.yml"
+    ansible.playbook = "./node1-playbook.yml"
     ansible.inventory_path = "./inventory/hosts"
-    ansible.limit = "master"
+    ansible.limit = "node1"
     ansible.verbose = true
   end
 

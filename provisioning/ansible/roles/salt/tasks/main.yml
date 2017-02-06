@@ -1,0 +1,37 @@
+---
+  - name: install dependencies
+    apt: name={{ item }} state=present
+    tags: salt
+    with_items:
+      - python-pip
+
+  - name: "Install Python packages:"
+    pip: name={{ item }}
+    tags: salt
+    with_items:
+      - docker-py
+      - docker-compose
+
+  - name: run salt master node
+    tags: salt
+    shell: docker run -d --name master -h master web3:latest-master tail -f /dev/null
+
+  - name: run salt minion node 1
+    tags: salt
+    shell: docker run -d --name minion1 -h minion1 --link master:salt web3:latest-minion tail -f /dev/null
+
+  - name: run salt minion node 2
+    tags: salt
+    shell: docker run -d --name minion2 -h minion2 --link master:salt web3:latest-minion tail -f /dev/null
+
+  - name: execute salt-master
+    tags: salt
+    shell: docker exec -d master bash -c "salt-master -d"
+
+  - name: execute salt-minion node1
+    tags: salt
+    shell: docker exec -d minion1 bash -c "salt-minion -d"
+
+  - name: execute salt-minion node2
+    tags: salt
+    shell: docker exec -d minion2 bash -c "salt-minion -d"
