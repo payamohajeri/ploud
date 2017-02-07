@@ -43,5 +43,39 @@ Vagrant.configure("2") do |config|
       ansible.verbose = true
     end
 
+    config.vm.define "node1" do |node1_config|
+      node1_config.vm.box = "ubuntu/xenial64"
+      node1_config.vm.box_check_update = true
+      node1_config.vm.network "forwarded_port", guest: 80, host: 8082
+      node1_config.vm.network "private_network", ip: "192.168.40.11"
+      node1_config.vm.synced_folder "./", "/vagrant"
+
+      node1_config.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"
+        vb.cpus = 1
+        vb.name = "ploud-master"
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--ioapic", "on"]
+      end
+
+    end
+
+    config.vm.define "node2" do |node2_config|
+      node2_config.vm.box = "ubuntu/xenial64"
+      node2_config.vm.box_check_update = true
+      node2_config.vm.network "forwarded_port", guest: 80, host: 8082
+      node2_config.vm.network "private_network", ip: "192.168.40.11"
+      node2_config.vm.synced_folder "./", "/vagrant"
+
+      node2_config.vm.provider "virtualbox" do |vb|
+        vb.memory = "1024"
+        vb.cpus = 1
+        vb.name = "ploud-master"
+        vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+        vb.customize ["modifyvm", :id, "--ioapic", "on"]
+      end
+
+    end
+
   end
 end
