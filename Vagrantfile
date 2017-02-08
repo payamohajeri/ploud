@@ -63,8 +63,8 @@ Vagrant.configure("2") do |config|
   config.vm.define "node2" do |node2_config|
     node2_config.vm.box = "ubuntu/xenial64"
     node2_config.vm.box_check_update = true
-    node2_config.vm.network "forwarded_port", guest: 80, host: 8082
-    node2_config.vm.network "private_network", ip: "192.168.40.11"
+    node2_config.vm.network "forwarded_port", guest: 80, host: 8083
+    node2_config.vm.network "private_network", ip: "192.168.40.12"
     node2_config.vm.synced_folder "./", "/vagrant"
 
     node2_config.vm.provider "virtualbox" do |vb|
