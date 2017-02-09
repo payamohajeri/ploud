@@ -10,8 +10,8 @@ Vagrant.configure("2") do |config|
     master_config.vm.synced_folder "./", "/vagrant"
 
     master_config.vm.provider "virtualbox" do |vb|
-      vb.memory = "2048"
-      vb.cpus = 2
+      vb.memory = "1024"
+      vb.cpus = 1
       vb.name = "ploud-master"
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
