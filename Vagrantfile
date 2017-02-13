@@ -51,6 +51,7 @@ Vagrant.configure("2") do |config|
     salt_master_config.vm.network "private_network", ip: "192.168.40.11"
     salt_master_config.vm.synced_folder "./", "/vagrant"
     salt_master_config.vm.synced_folder "./provisioning/saltstack/salt", "/srv/salt"
+    salt_master_config.vm.synced_folder "./provisioning/saltstack/pillar", "/srv/pillar"
 
 
     salt_master_config.vm.provider "virtualbox" do |vb|
