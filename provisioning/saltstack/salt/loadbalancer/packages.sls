@@ -1,4 +1,4 @@
-nginx_packages:
+webserver_packages:
   pkg.installed:
     - pkgs:
       - nginx
