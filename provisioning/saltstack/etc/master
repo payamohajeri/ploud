@@ -1,5 +1,9 @@
 autosign_file: /etc/salt/autosign.conf
 
+log_level: debug
+
 reactor:
   - 'salt/minion/*/start':
-    - /srv/salt/top.sls
+    - /srv/reactor/basic.sls
+  - salt/job/*/ret/*:
+    - /srv/reactor/job_ret.sls
