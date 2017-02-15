@@ -3,3 +3,7 @@ wget -O - https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG
 sudo echo 'deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main' > /etc/apt/sources.list.d/saltstack.list
 sudo apt-get update -y
 sudo apt-get install salt-minion -y
+sudo cp /vagrant/provisioning/saltstack/etc/minion /etc/salt/minion
+sudo update-rc.d salt-minion defaults
+sudo update-rc.d salt-minion enable
+sudo service salt-minion start
