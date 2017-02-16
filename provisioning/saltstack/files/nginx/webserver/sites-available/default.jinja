@@ -1,3 +1,4 @@
+{%- set interface = 'enp0s8' -%}
 {%- set addr = salt['network.interface_ip'](interface) -%}
 
 server {

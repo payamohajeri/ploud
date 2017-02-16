@@ -3,4 +3,4 @@ logging_webserver_added:
     - name: new webserver frontend added to pool
     - tgt: '*'
     - arg:
-      - 'echo "[{{ data['id'] }}][new httpd] webserver ({{ data['data']['new_web_server_ip'] }}:80) restarted ({{ tag }})" >> /tmp/salt.reactor.log'
+      - 'echo "[{{ data['id'] }}][new httpd] webserver ({{ data['data']['new_web_server_ip'] }}:80) added ({{ tag }})" >> /tmp/salt.reactor.log'
