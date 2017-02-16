@@ -1,0 +1,19 @@
+{% set host = salt['grains.get']('host') -%}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome from {{ host }}</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>Hello!  This is being served from:</p>
+<h2>{{ host }}</h2>
+</body>
+</html>

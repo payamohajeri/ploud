@@ -1,3 +1,8 @@
+file_roots:
+  base:
+    - /srv/states
+    - /srv/files
+
 autosign_file: /etc/salt/autosign.conf
 
 log_level: debug
@@ -7,3 +12,7 @@ reactor:
     - /srv/reactor/basic.sls
   - salt/job/*/ret/*:
     - /srv/reactor/job_ret.sls
+  - frontend/webserver/restart:
+    - /srv/reactor/webserver_restarted.sls
+  - frontend/loadbalancer/pool/update:
+    - /srv/reactor/add_webserver.sls

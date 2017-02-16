@@ -49,9 +49,10 @@ Vagrant.configure("2") do |config|
     salt_master_config.vm.box_check_update = true
     salt_master_config.vm.network "private_network", ip: "192.168.41.11"
     salt_master_config.vm.synced_folder "./", "/vagrant"
-    salt_master_config.vm.synced_folder "./provisioning/saltstack/salt", "/srv/salt"
+    salt_master_config.vm.synced_folder "./provisioning/saltstack/states", "/srv/states"
     salt_master_config.vm.synced_folder "./provisioning/saltstack/pillar", "/srv/pillar"
     salt_master_config.vm.synced_folder "./provisioning/saltstack/reactor", "/srv/reactor"
+    salt_master_config.vm.synced_folder "./provisioning/saltstack/files", "/srv/files"
     salt_master_config.vm.hostname = "salt-master"
 
     salt_master_config.vm.provider "virtualbox" do |vb|
@@ -69,12 +70,12 @@ Vagrant.configure("2") do |config|
     node1_config.vm.box_check_update = true
     node1_config.vm.network "private_network", ip: "192.168.41.12"
     node1_config.vm.synced_folder "./", "/vagrant"
-    node1_config.vm.hostname = "ploud-web-node1"
+    node1_config.vm.hostname = "ploud-balacer-node1"
 
     node1_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
       vb.cpus = 1
-      vb.name = "ploud-web-node1"
+      vb.name = "ploud-balacer-node1"
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
     end
@@ -86,12 +87,12 @@ Vagrant.configure("2") do |config|
     node2_config.vm.box_check_update = true
     node2_config.vm.network "private_network", ip: "192.168.41.13"
     node2_config.vm.synced_folder "./", "/vagrant"
-    node2_config.vm.hostname = "ploud-balacer-node1"
+    node2_config.vm.hostname = "ploud-web-node1"
 
     node2_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
       vb.cpus = 1
-      vb.name = "ploud-balacer-node1"
+      vb.name = "ploud-web-node1"
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
     end

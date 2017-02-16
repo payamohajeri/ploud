@@ -4,5 +4,5 @@ log_minion_new_job:
     - name: log minion job
     - tgt: '*'
     - arg:
-      - 'echo "[{{ data['id'] }}][ret job ] A minion just executed {{ data['fun'] }}{% if 'arg' in data %} and {{ data['arg'] }} {% endif %}. ({{ tag }})" >> /tmp/salt.reactor.log'
+      - 'echo "[{{ data['id'] }}][ret job ] A minion just executed {{ data['fun'] }}. ({{ tag }})" >> /tmp/salt.reactor.log'
 {% endif %}
