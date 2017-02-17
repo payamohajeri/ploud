@@ -20,7 +20,7 @@ tell_minion_to_install_webserver:
     - arg:
       - webserver
 {% elif "ploud-balancer" in data['id'] %}
-tell_minion_to_install_webserver:
+tell_minion_to_install_loadbalancer:
   local.state.sls:
     - name: tell minion to install loadbalancer
     - tgt: {{ data['id'] }}

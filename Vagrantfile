@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
     node1_config.vm.box_check_update = true
     node1_config.vm.network "private_network", ip: "192.168.41.12"
     node1_config.vm.synced_folder "./", "/vagrant"
-    node1_config.vm.hostname = "ploud-balacer-node1"
+    node1_config.vm.hostname = "ploud-balancer-node1"
 
     node1_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"

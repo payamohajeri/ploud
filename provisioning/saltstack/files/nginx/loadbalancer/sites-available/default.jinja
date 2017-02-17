@@ -2,9 +2,7 @@
 {%- set addr = salt['network.interface_ip'](interface) -%}
 
 upstream backend  {
-{% for server in salt['cmd.run']('cat /srv/files/data/webservers/ | grep -v "#"').split() %}
-	server {{ server }};
-{% endfor %}
+#webservers
 }
 
 server {
