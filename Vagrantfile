@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
     node1_config.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
       vb.cpus = 1
-      vb.name = "ploud-balacer-node1"
+      vb.name = "ploud-balancer-node1"
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--ioapic", "on"]
     end

@@ -1,3 +1,8 @@
+/srv/files/data/webservers:
+  file.managed:
+    - source: salt://data/webservers
+    - makedirs: True
+
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://nginx/loadbalancer/nginx.conf

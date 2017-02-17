@@ -3,5 +3,5 @@ base:
     - common
   'ploud-web-*':
     - webserver
-  'ploud-balacer-*':
+  'ploud-balancer-*':
     -loadbalancer
