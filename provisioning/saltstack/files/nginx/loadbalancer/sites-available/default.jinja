@@ -2,7 +2,7 @@
 {%- set addr = salt['network.interface_ip'](interface) -%}
 
 upstream backend  {
-#webservers
+	server 192.168.1.1;
 }
 
 server {
